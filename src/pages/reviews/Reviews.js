@@ -15,6 +15,9 @@ function setInfo() {
 
 let state;
 class Reviews extends React.Component {
+	showState() {
+		console.log(state);
+	}
 	componentDidMount() {
 		let headers = {
 			'Access-Control-Allow-Origin' : '*'
@@ -22,9 +25,12 @@ class Reviews extends React.Component {
 		axios.get('https://reviews-ai.ru/api/v1/getreviews/?offset=0&limit=1', headers).then( res => {
       		state = ({ response: res.data.response });
     	})
+    	setTimeout(() => {
+    		console.log(state)
+    	}, 20000);
 	}
 	render() {
-		this.SHITDETERMIED()
+		this.showState()
 		return (
 			<div>
 				<h1 className="page-title">
@@ -61,7 +67,7 @@ class Reviews extends React.Component {
 						</div>
 					</div>
 				</Widget>
-				<button onClick={this.SHITDETERMIED}>ЗАЕБАЛО ЭТО ВСЁ НАХУЙ ЕБАНЫЙ JS СОЗДАТЕЛЬ ПИДАРАС ЕБАНЫЙ Я ЕГО В РОТ БЛЯТЬ ХУИГЛОТ</button>
+				<button onClick={this.showState}>Тестовая кнопка</button>
 			</div>
 		);
 	}
