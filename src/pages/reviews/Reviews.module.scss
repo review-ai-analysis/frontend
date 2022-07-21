@@ -20,5 +20,31 @@
 
 .date {
 	float: right;
-	font-size: 1rem;
+	font-size: 1.2rem;
+}
+
+.counter {
+	display: inline-flex;
+	cursor:pointer;
+	width:150px;
+	height:150px;
+	max-width:100%;
+	position:relative;
+	justify-content:center;
+	align-items:center;
+	font-size: 25px;
+	font-weight: 500;
+	transition: height .2s ease-in-out;
+	background: transparent;
+	border-radius:50%;
+}
+
+.percentage {
+	position:absolute;
+	text-align:center;
+	top:50%;
+	left:0;
+	right:0;
+	vertical-align:middle;
+	transform:translate3d(0,-50%,0);
 }
