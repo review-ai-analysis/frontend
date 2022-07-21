@@ -22,20 +22,24 @@ class Reviews extends React.Component {
 		let headers = {
 			'Access-Control-Allow-Origin' : '*'
 		}
-		axios.get('https://reviews-ai.ru/api/v1/getreviews/?offset=0&limit=1', headers).then( res => {
+		axios.get('https://reviews-ai.ru/api/v1/getreviews/?offset=0&limit=50', headers).then( res => {
       		state = ({ response: res.data.response });
     	})
     	setTimeout(() => {
-    		console.log(state)
-    	}, 20000);
+    		
+    	}, 500);
 	}
 	render() {
+
 		this.showState()
 		return (
 			<div>
 				<h1 className="page-title">
 					Отзывы
 				</h1>
+				{state.map((body, index) => {
+					body.rating
+				})}
 				<Widget>
 					<div className={s.review}>
 						<div className={s.text}>
