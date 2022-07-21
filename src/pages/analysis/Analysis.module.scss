@@ -1,0 +1,126 @@
+@import '../../styles/app';
+
+.bgStyle {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+}
+
+.counter {
+	display: inline-flex;
+	cursor:pointer;
+	width:150px;
+	height:150px;
+	max-width:100%;
+	position:relative;
+	justify-content:center;
+	align-items:center;
+	font-size: 25px;
+	font-weight: 500;
+	transition: height .2s ease-in-out;
+	background: transparent;
+	border-radius:50%;
+}
+
+.percentage {
+	position:absolute;
+	text-align:center;
+	top:50%;
+	left:0;
+	right:0;
+	vertical-align:middle;
+	transform:translate3d(0,-50%,0);
+}
+
+.columnReviews {
+	height: 90%;
+}
+
+canvas {
+	position:absolute;
+	top:0;
+	left:0;
+}
+
+// 4к монитор
+@media (min-width: 2560px) {
+	.descriptionAnalysis, .label {
+		font-size: 3vh !important;
+	}
+}
+
+// узкий пк и телефон
+@media	(max-width: 767px),
+		(min-width: 991px) and (max-width: 1360px) {
+	.counter {
+		min-width: 150px;
+		display: block;
+		margin: 0 auto !important;
+	}
+	.rating, .categories {
+		padding: 0;
+		width: 100%;
+	}
+}
+
+// Планшет и широкий пк
+@media  (min-width: 768px) and (max-width: 990px),
+		(min-width: 1361px){
+	.rating {
+		margin: auto;
+		width: 30%;
+	}
+	.categories {
+		display: flex;
+		flex-direction: column;
+		padding-left: 10%;
+		width: 70%;
+	}
+	.descriptionAnalysis, .categories {
+		margin: 0;
+	}
+	.descriptionAnalysis {
+		padding-bottom: 1rem;
+	}
+}
+
+.label, .progressBar, .progressBlock  {
+	float: left;
+}
+
+.progressBar {
+	margin-bottom: 10px;
+}
+
+.progressBar, .label {
+	width: 100%;
+}
+
+.progressBlock {
+	width: 9% !important;
+	height: 2vh !important;
+	margin: 2px 0.5% !important;
+	border-radius: 2px;
+	background-color: transparent; // #E6E6E6
+}
+
+.active {
+	background-color: none;
+}
+
+.descriptionLabel {
+	float: right;
+}
+
+.descriptionAnalysis {
+	font-size: 16px;
+}
+
+@keyframes showBlock {
+	0% {
+		opacity: 0;
+	}
+	100% {
+		opacity: 1;
+	}
+}

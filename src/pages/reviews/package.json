@@ -1,0 +1,6 @@
+{
+  "name": "reviews",
+  "version": "0.0.0",
+  "private": true,
+  "main": "Reviews.js"
+}

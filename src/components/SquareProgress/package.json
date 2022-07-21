@@ -1,0 +1,6 @@
+{
+	"name": "SquareProgress",
+	"version": "0.0.0",
+	"private": true,
+	"main": "./SquareProgress.js"
+}
