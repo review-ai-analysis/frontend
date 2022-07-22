@@ -3,17 +3,18 @@
 .text {
 	margin: auto;
 	width: 65%;
-	padding-right: 10%;
+	padding-right: 5%;
 }
 
 .data {
 	display: flex;
 	flex-direction: row;
+	flex-wrap: wrap;
 	width: 35%;
 }
 
 .rating {
-	padding-right: 10%;
+	padding-right: 5%;
 }
 
 .categories {
@@ -65,4 +66,44 @@
 	right:0;
 	vertical-align:middle;
 	transform:translate3d(0,-50%,0);
+}
+
+// 4к монитор
+@media (min-width: 2560px) {
+	.descriptionAnalysis, .label {
+		font-size: 3vh !important;
+	}
+}
+
+// узкий пк и телефон
+@media	(max-width: 1360px) {
+	.counter {
+		min-width: 150px;
+		display: block;
+		margin: 0 auto !important;
+	}
+	.data, .text, .rating, .categories {
+		padding: 0;
+		width: 100%;
+	}
+}
+
+// Планшет и широкий пк
+@media  (min-width: 1361px){
+	.rating {
+		margin: auto;
+		width: 50%;
+	}
+	.categories {
+		display: flex;
+		flex-direction: column;
+		padding-left: 10%;
+		width: 50%;
+	}
+	.descriptionAnalysis, .categories {
+		margin: 0;
+	}
+	.descriptionAnalysis {
+		padding-bottom: 1rem;
+	}
 }
