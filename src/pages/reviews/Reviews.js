@@ -8,7 +8,46 @@ let banks, sources;
 class Reviews extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {response: []};
+		this.state = {response: [], limit: 0};
+		this.checkPosition = this.checkPosition.bind(this);
+	}
+
+	throttle(callee, timeout) {
+		let timer = null
+		return function perform(...args) {
+			if (timer) return
+			timer = setTimeout(() => {
+				callee(...args)
+				clearTimeout(timer)
+				timer = null
+			}, timeout)
+		}
+	}
+	
+	checkPosition() {
+		// Высота документа и высота экрана:
+		const height = Math.max(
+				document.body.scrollHeight, document.documentElement.scrollHeight,
+				document.body.offsetHeight, document.documentElement.offsetHeight,
+				document.body.clientHeight, document.documentElement.clientHeight
+		);
+		const screenHeight = window.innerHeight
+		// Cколько пикселей проскроллил
+		const scrolled = window.scrollY
+		// Порог
+		const threshold = height - screenHeight / 4
+		// Отслеживаем, где находится низ экрана относительно страницы:
+		const position = scrolled + screenHeight
+		// console.log(`Height - ${height}, screenHeight - ${screenHeight}, scrolled - ${scrolled}, threshold - ${threshold}, position - ${position}`)
+		if (position >= threshold) {
+			let headers = {
+				'Access-Control-Allow-Origin' : '*'
+			}
+			axios.get(`https://reviews-ai.ru/api/v1/getreviews/?offset=${this.state.limit}&limit=${this.state.limit + 20}`, headers).then( res => {
+				let result = this.state.response.concat(res.data.response)
+				this.setState({ response: result, limit: this.state.limit + 20 });
+			})
+		}
 	}
 
 	showAll(event, body, item) {
@@ -21,8 +60,9 @@ class Reviews extends React.Component {
 			'Access-Control-Allow-Origin' : '*'
 		}
 		axios.get('https://reviews-ai.ru/api/v1/getreviews/?offset=0&limit=20', headers).then( res => {
-      		this.setState({ response: res.data.response });
-    	})
+			this.setState({ response: res.data.response, limit: 20 });
+		})
+		window.addEventListener("scroll", this.throttle(this.checkPosition, 250))
 	}
 
 	componentDidUpdate() {
@@ -59,8 +99,6 @@ class Reviews extends React.Component {
 				</h1>
 			</div>);
 		}
-		Object.assign({}, this.state.response)
-		console.log(this.state.response.map((body, item) => body))
 		return (
 			<div>
 				<h1 className="page-title">
