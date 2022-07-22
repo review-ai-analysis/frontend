@@ -62,16 +62,6 @@ let SquareProgress = (function(selector, categories, classProgressBar, classProg
 			animate();
 		}
 		update();
-
-		let resizeTimer;
-		window.addEventListener("resize", function() {
-			clearTimeout(resizeTimer);
-			resizeTimer = setTimeout(function() {
-				clearTimeout(resizeTimer);
-				start = new Date().getTime();
-				update();
-			}, 250);
-		});
 	});
 	
 	function easeInOutQuart(t, b, c, d) {
