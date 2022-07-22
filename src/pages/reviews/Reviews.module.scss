@@ -8,8 +8,26 @@
 
 .data {
 	display: flex;
-	flex-direction: column;
+	flex-direction: row;
 	width: 35%;
+}
+
+.rating {
+	padding-right: 10%;
+}
+
+.categories {
+	display: flex;
+	flex-direction: column;
+}
+
+.categoriesElem {
+	margin-top: 5%;
+}
+
+.showFullReview {	
+    color: #1870dc !important;
+    text-decoration: none !important;
 }
 
 .review {

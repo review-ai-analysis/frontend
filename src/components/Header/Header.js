@@ -11,7 +11,6 @@ import {
 	InputGroupText,
 	InputGroup,
 	Input,
-	UncontrolledAlert,
 	Dropdown,
 	Collapse,
 	DropdownToggle,
@@ -20,8 +19,6 @@ import {
 	Badge,
 	ButtonGroup,
 	Button,
-	Form,
-	FormGroup,
 } from "reactstrap";
 import Notifications from "../Notifications";
 import PowerIcon from "../Icons/HeaderIcons/PowerIcon";

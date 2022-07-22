@@ -37,11 +37,6 @@ function setInfo() {
 	setCircle(rating);
 }
 
-function getColor(value) {
-	var hue = (value * 120).toString(10);
-	return ["hsl(", hue, ",100%,50%)"].join("");
-}
-
 const Reviews = () => (
 	<div>
 		<h1 className="page-title">
