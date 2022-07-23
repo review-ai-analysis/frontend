@@ -10,7 +10,7 @@ import SquareProgress from '../../components/SquareProgress/'
 class Analysis extends React.Component {
 	constructor(props) {
 		super(props);
-		this.state = {categories: [], rating: 0};
+		this.state = {categories: [], rating: 0, error: ''};
 		this.setInfo = this.setInfo.bind(this);
 	}
 
@@ -46,19 +46,26 @@ class Analysis extends React.Component {
 	    	data: bodyFormData,
 	  		headers: { "Content-Type": "multipart/form-data" },
 		}).then(res => {
-			this.setState({ categories: res.data.response.categories, rating: res.data.response.rating * 5 });
+			console.log(res.data)
+			if(res.data.response) {
+				this.setState({ categories: res.data.response.categories, rating: res.data.response.rating * 5 });	
+				let errorDiv = document.getElementById('errorDiv');
+				errorDiv.setAttribute('style', 'display: none')
+				let widgets = document.getElementsByClassName(`${s.columnReviews}`);
+				for (let i = 0; i < widgets.length; i++) {
+					widgets[i].setAttribute('style', '');
+				}
+				this.setSquares(this.state.categories);
+				this.setCircle(this.state.rating);
+			} else {
+				this.setState({ error: res.data.error })
+				let widgets = document.getElementsByClassName(`${s.columnReviews}`)[1];
+				widgets.setAttribute('style', 'display: none');
+				let errorDiv = document.getElementById('errorDiv');
+				errorDiv.setAttribute('style', '')
+				errorDiv.textContent = this.state.error;
+			}
 		})
-
-		// появление блока с результами анализа
-		let widgets = document.getElementsByClassName(`${s.columnReviews}`);
-		for (let i = 0; i < widgets.length; i++) {
-			widgets[i].setAttribute('style', '');
-		}
-		console.log(this.state.categories, this.state.rating)
-		setTimeout(() => {
-			this.setSquares(this.state.categories);
-			this.setCircle(this.state.rating);
-		}, 1000);
 	}
 
 	render() {
@@ -77,6 +84,7 @@ class Analysis extends React.Component {
 											className="form-control reviewArea" 
 											placeholder="Введите текст вашего отзыва здесь..."></textarea>
 								</div>
+								<div className="alert alert-danger" role="alert" id="errorDiv" style={{ display: 'none' }}>Просто проверка поля текста для ошибок</div>
 								<Button onClick={this.setInfo} color="default" style={{ marginTop: "0.5rem" }} 
 										className="mr-2" size="sm">Отправить</Button>
 							</form>

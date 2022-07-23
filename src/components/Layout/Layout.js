@@ -81,9 +81,6 @@ class Layout extends React.Component {
 									</Switch>
 								</CSSTransition>
 							</TransitionGroup>
-							<footer className={s.contentFooter}>
-								<img src={logo} style={{ width: '65%', height: '65%' }}></img> 
-							</footer>
 						</main>
 					</Hammer>
 				</div>

@@ -56,16 +56,6 @@ class Reviews extends React.Component {
 	};
 
 	componentDidMount() {
-		let headers = {
-			'Access-Control-Allow-Origin' : '*'
-		}
-		axios.get('https://reviews-ai.ru/api/v1/getreviews/?offset=0&limit=20', headers).then( res => {
-			this.setState({ response: res.data.response, limit: 20 });
-		})
-		window.addEventListener("scroll", this.throttle(this.checkPosition, 250))
-	}
-
-	componentDidUpdate() {
 		banks = [
 		['gpb', 'Газпромбанк'],
 		['alfa', 'Альфа-Банк'],
@@ -81,6 +71,16 @@ class Reviews extends React.Component {
 		['playmarket', 'Google PlayMarket'],
 		['banki_ru', 'Banki.ru']
 		];
+		let headers = {
+			'Access-Control-Allow-Origin' : '*'
+		}
+		axios.get('https://reviews-ai.ru/api/v1/getreviews/?offset=100000&limit=100020', headers).then( res => {
+			this.setState({ response: res.data.response, limit: 100020 });
+		})
+		window.addEventListener("scroll", this.throttle(this.checkPosition, 250))
+	}
+
+	componentDidUpdate() {
 		let standartText, classPercentage;
 		try {
 			standartText = document.getElementsByClassName(`${s.percentage}`);
@@ -99,6 +99,7 @@ class Reviews extends React.Component {
 				</h1>
 			</div>);
 		}
+		console.log(this.state.response)
 		return (
 			<div>
 				<h1 className="page-title">
