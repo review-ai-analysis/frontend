@@ -101,12 +101,12 @@ class Reviews extends React.Component {
 		}
 		console.log(this.state.response)
 		return (
-			<div>
-				<h1 className="page-title">
+			<div className={s.widgetClass}>
+				<h1 className={s.pageTitle}>
 					Отзывы
 				</h1>
 				{this.state.response.map((body, item) =>
-				<Widget>
+				<Widget className={s.widgetElem}>
 					<div className={s.review}>
 						<div className={s.text}>
 							<h4>{body.username} 

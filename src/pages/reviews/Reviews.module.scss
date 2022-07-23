@@ -73,6 +73,18 @@
 	.descriptionAnalysis, .label {
 		font-size: 3vh !important;
 	}
+	.widgetClass {
+		display: flex;
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+	.pageTitle {
+		width: 100%;
+	}
+	.widgetElem {
+		width: 45%;
+		margin-right: 5%;
+	}
 }
 
 // узкий пк и телефон
