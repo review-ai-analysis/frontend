@@ -76,8 +76,7 @@
 }
 
 // узкий пк и телефон
-@media	(max-width: 767px),
-		(min-width: 991px) and (max-width: 1360px) {
+@media	(max-width: 767px) {
 	.counter {
 		min-width: 150px;
 		display: block;
@@ -89,9 +88,30 @@
 	}
 }
 
-// Планшет и широкий пк
-@media  (min-width: 768px) and (max-width: 990px),
-		(min-width: 1361px) {
+// Планшет
+@media (min-width: 768px) and (max-width: 1360px) {
+	.text, .data {
+		width: 100%;
+	}
+	.rating {
+		margin: auto;
+		width: 50%;
+	}
+	.categories {
+		display: flex;
+		flex-direction: column;
+		width: 50%;
+	}
+	.descriptionAnalysis, .categories {
+		margin: 0;
+	}
+	.descriptionAnalysis {
+		padding-bottom: 1rem;
+	}
+}
+
+// Широкий пк
+@media  (min-width: 1361px) {
 	.rating {
 		margin: auto;
 		width: 50%;
