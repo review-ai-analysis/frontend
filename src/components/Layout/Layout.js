@@ -5,19 +5,15 @@ import { Switch, Route, withRouter, Redirect } from 'react-router';
 import { TransitionGroup, CSSTransition } from 'react-transition-group';
 import Hammer from 'rc-hammerjs';
 
-import UIIcons from '../../pages/components/icons';
-import UINotifications from '../../pages/notifications';
-import TablesStatic from '../../pages/tables/static';
-import MapsGoogle from '../../pages/components/maps/google';
-import CoreTypography from '../../pages/typography';
-import Charts from '../../pages/components/charts/Charts';
 import Dashboard from '../../pages/dashboard';
 import Analysis from '../../pages/analysis/';
-import Reviews from '../../pages/reviews/';
+import Reviews from '../../pages/reviews';
+import Charts from '../../pages/charts/';
 
 import Header from '../Header';
 import Sidebar from '../Sidebar';
 import { openSidebar, closeSidebar } from '../../actions/navigation';
+import logo from './gpbLogo.png';
 import s from './Layout.module.scss';
 
 class Layout extends React.Component {
@@ -79,19 +75,14 @@ class Layout extends React.Component {
 									<Switch>
 										<Route path="/app/main" exact render={() => <Redirect to="/app/main/dashboard" />} />
 										<Route path="/app/main/dashboard" exact component={Dashboard} />
-										<Route path="/app/components/icons" exact component={UIIcons} />
-										<Route path="/app/notifications" exact component={UINotifications} />
-										<Route path="/app/components/charts" exact component={Charts} />
-										<Route path="/app/tables" exact component={TablesStatic} />
-										<Route path="/app/components/maps" exact component={MapsGoogle} />
-										<Route path="/app/typography" exact component={CoreTypography} />
 										<Route path="/app/analysis" exact component={Analysis} />
 										<Route path="/app/reviews" exact component={Reviews} />
+										<Route path="/app/charts" exact component={Charts} />
 									</Switch>
 								</CSSTransition>
 							</TransitionGroup>
 							<footer className={s.contentFooter}>
-								Наш <a href="https://reviews-ai.ru">сайт</a> анализа отзывов.
+								<img src={logo} style={{ width: '65%', height: '65%' }}></img> 
 							</footer>
 						</main>
 					</Hammer>
