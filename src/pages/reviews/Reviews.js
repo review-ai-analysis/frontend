@@ -56,24 +56,22 @@ class Reviews extends React.Component {
 	};
 
 	componentDidMount() {
-		banks = [
-		['gpb', 'Газпромбанк'],
-		['alfa', 'Альфа-Банк'],
-		['pochtabank', 'Почта Банк'],
-		['raif', 'Райффайзенбанк'],
-		['sberbank', 'СберБанк'],
-		['tinkoff', 'Тинькофф'],
-		['vtb', 'ВТБ']
-		];
-		sources = [
-		['otzovik', 'Отзовик'],
-		['i_recomend', 'IRecommend.ru'],
-		['playmarket', 'Google PlayMarket'],
-		['banki_ru', 'Banki.ru']
-		];
-		let headers = {
-			'Access-Control-Allow-Origin' : '*'
-		}
+		banks = {
+			'gpb': 'Газпромбанк',
+			'alfa': 'Альфа-Банк',
+			'pochtabank': 'Почта Банк',
+			'raif': 'Райффайзенбанк',
+			'sberbank': 'СберБанк',
+			'tinkoff': 'Тинькофф',
+			'vtb': 'ВТБ'
+		};
+		sources = {
+			'otzovik': 'Отзовик',
+			'i_recomend': 'IRecommend.ru',
+			'playmarket': 'Google PlayMarket',
+			'banki_ru': 'Banki.ru'
+		};
+		let headers = { 'Access-Control-Allow-Origin' : '*' }
 		axios.get('https://reviews-ai.ru/api/v1/getreviews/?offset=100000&limit=100020', headers).then( res => {
 			this.setState({ response: res.data.response, limit: 100020 });
 		})
@@ -99,7 +97,6 @@ class Reviews extends React.Component {
 				</h1>
 			</div>);
 		}
-		console.log(this.state.response)
 		return (
 			<div className={s.widgetClass}>
 				<h1 className={s.pageTitle}>
@@ -127,16 +124,12 @@ class Reviews extends React.Component {
 							<div className={s.categories}>
 								<h5 className={s.descriptionAnalysis}>Другие характеристики</h5>
 								<div className={s.categoriesElem}>Адрес: {body.address}</div>
-								{banks.map((bank, index) =>
-									banks[index][0].includes(body.bank) && <div className={s.categoriesElem}>Банк: {banks[index][1]}</div>
-								)}
+								<div className={s.categoriesElem}>Банк: {banks[body.bank]}</div>
 								{body.category_name
 									? <div className={s.categoriesElem}>Категория: {body.category_name}</div>
 									: <div className={s.categoriesElem}>Категория: не указана</div>
 								}
-								{sources.map((source, index) =>
-									sources[index][0].includes(body.source) && <div className={s.categoriesElem}>Ресурс: {sources[index][1]}</div>
-								)}
+								<div className={s.categoriesElem}>Ресурс: {sources[body.source]}</div>
 							</div>
 						</div>
 					</div>

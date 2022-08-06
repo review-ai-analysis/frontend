@@ -37,7 +37,6 @@ let CircleProgress = (function(selector, standartText, classPercentage) {
 			to = percent;
 			duration = 3000;
 			lineWidth = 40;
-			console.log(`Radius - ${radius}, width - ${canvas.width}`)
 			radius = canvas.width / 2 - lineWidth;
 			start = new Date().getTime();
 		};

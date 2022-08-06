@@ -1,111 +1,14 @@
 @import '../../styles/app';
 
-.text {
-	margin: auto;
-	width: 65%;
-	padding-right: 5%;
+.animCharts {
+	height: 60vh;
+	width: 60vw;
+	position: relative;
 }
 
-.data {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-content: flex-start;
-	width: 35%;
-}
-
-.rating {
-	padding-right: 5%;
-}
-
-.categories {
-	display: flex;
-	flex-direction: column;
-}
-
-.categoriesElem {
-	margin-top: 1vh;
-}
-
-.showFullReview {	
-    color: #1870dc !important;
-    text-decoration: none !important;
-}
-
-.review {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-}
-
-.date {
-	float: right;
-	font-size: 1.2rem;
-}
-
-.counter {
-	display: inline-flex;
-	cursor:pointer;
-	width:150px;
-	height:150px;
-	max-width:100%;
-	position:relative;
-	justify-content:center;
-	align-items:center;
-	font-size: 25px;
-	font-weight: 500;
-	transition: height .2s ease-in-out;
-	background: transparent;
-	border-radius:50%;
-}
-
-.percentage {
-	position:absolute;
-	text-align:center;
-	top:50%;
-	left:0;
-	right:0;
-	vertical-align:middle;
-	transform:translate3d(0,-50%,0);
-}
-
-// 4к монитор
-@media (min-width: 2560px) {
-	.descriptionAnalysis, .label {
-		font-size: 3vh !important;
+@media (min-width: 768px) {
+	.animCharts {
+		height: auto;
+		width: auto;
 	}
-}
-
-// узкий пк и телефон
-@media	(max-width: 767px),
-		(min-width: 991px) and (max-width: 1360px) {
-	.counter {
-		min-width: 150px;
-		display: block;
-		margin: 0 auto !important;
-	}
-	.data, .text, .rating, .categories {
-		padding: 0;
-		width: 100%;
-	}
-}
-
-// Планшет и широкий пк
-@media  (min-width: 768px) and (max-width: 990px),
-		(min-width: 1361px) {
-	.rating {
-		margin: auto;
-		width: 50%;
-	}
-	.categories {
-		display: flex;
-		flex-direction: column;
-		width: 50%;
-	}
-	.descriptionAnalysis, .categories {
-		margin: 0;
-	}
-	.descriptionAnalysis {
-		padding-bottom: 1rem;
-	}
-}
+ }

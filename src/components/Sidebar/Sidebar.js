@@ -18,110 +18,119 @@ import ComponentsIcon from '../Icons/SidebarIcons/ComponentsIcon';
 
 
 class Sidebar extends React.Component {
-    static propTypes = {
-        sidebarStatic: PropTypes.bool,
-        sidebarOpened: PropTypes.bool,
-        dispatch: PropTypes.func.isRequired,
-        activeItem: PropTypes.string,
-        location: PropTypes.shape({
-            pathname: PropTypes.string,
-        }).isRequired,
-    };
+	static propTypes = {
+		sidebarStatic: PropTypes.bool,
+		sidebarOpened: PropTypes.bool,
+		dispatch: PropTypes.func.isRequired,
+		activeItem: PropTypes.string,
+		location: PropTypes.shape({
+			pathname: PropTypes.string,
+		}).isRequired,
+	};
 
-    static defaultProps = {
-        sidebarStatic: false,
-        activeItem: '',
-    };
+	static defaultProps = {
+		sidebarStatic: false,
+		activeItem: '',
+	};
 
-    constructor(props) {
-        super(props);
+	constructor(props) {
+		super(props);
 
-        this.doLogout = this.doLogout.bind(this);
-    }
+		this.doLogout = this.doLogout.bind(this);
+	}
 
-    componentDidMount() {
-        this.element.addEventListener('transitionend', () => {
-            if (this.props.sidebarOpened) {
-                this.element.classList.add(s.sidebarOpen);
-            }
-        }, false);
-    }
+	componentDidMount() {
+		this.element.addEventListener('transitionend', () => {
+			if (this.props.sidebarOpened) {
+				this.element.classList.add(s.sidebarOpen);
+			}
+		}, false);
+	}
 
-    componentWillReceiveProps(nextProps) {
-        if (nextProps.sidebarOpened !== this.props.sidebarOpened) {
-            if (nextProps.sidebarOpened) {
-                this.element.style.height = `${this.element.scrollHeight}px`;
-            } else {
-                this.element.classList.remove(s.sidebarOpen);
-                setTimeout(() => {
-                    this.element.style.height = '';
-                }, 0);
-            }
-        }
-    }
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.sidebarOpened !== this.props.sidebarOpened) {
+			if (nextProps.sidebarOpened) {
+				this.element.style.height = `${this.element.scrollHeight}px`;
+			} else {
+				this.element.classList.remove(s.sidebarOpen);
+				setTimeout(() => {
+					this.element.style.height = '';
+				}, 0);
+			}
+		}
+	}
 
-    dismissAlert(id) {
-        this.props.dispatch(dismissAlert(id));
-    }
+	dismissAlert(id) {
+		this.props.dispatch(dismissAlert(id));
+	}
 
-    doLogout() {
-        this.props.dispatch(logoutUser());
-    }
+	doLogout() {
+		this.props.dispatch(logoutUser());
+	}
 
-    render() {
-        return (
-            <nav
-                className={cx(s.root)}
-                ref={(nav) => {
-                    this.element = nav;
-                }}
-            >
-                <header className={s.logo}>
-                    <a href="https://reviews-ai.ru/">Reviews-<span
-                        className="fw-bold">AI</span></a>
-                </header>
-                <ul className={s.nav}>
-                    <LinksGroup
-                        onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
-                        activeItem={this.props.activeItem}
-                        header="Основная"
-                        isHeader
-                        iconName={<HomeIcon className={s.menuIcon} />}
-                        link="/app/main"
-                        index="main"
-                    />
-                    <h5 className={[s.navTitle, s.groupTitle].join(' ')}>Страницы</h5>
-                    <LinksGroup
-                        onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
-                        activeItem={this.props.activeItem}
-                        header="Анализ отзывов"
-                        isHeader
-                        iconName={<TypographyIcon className={s.menuIcon} />}
-                        link="/app/analysis"
-                        index="analysis"
-                    />
-                    <LinksGroup
-                        onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
-                        activeItem={this.props.activeItem}
-                        header="Все отзывы"
-                        isHeader
-                        iconName={<TypographyIcon className={s.menuIcon} />}
-                        link="/app/reviews"
-                        index="reviews"
-                    />
-                </ul>
-            </nav>
-        );
-    }
+	render() {
+		return (
+			<nav
+				className={cx(s.root)}
+				ref={(nav) => {
+					this.element = nav;
+				}}
+			>
+				<header className={s.logo}>
+					<a href="https://reviews-ai.ru/">Reviews-<span
+						className="fw-bold">AI</span></a>
+				</header>
+				<ul className={s.nav}>
+					<LinksGroup
+						onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+						activeItem={this.props.activeItem}
+						header="Основная"
+						isHeader
+						iconName={<HomeIcon className={s.menuIcon} />}
+						link="/app/main"
+						index="main"
+					/>
+					<h5 className={[s.navTitle, s.groupTitle].join(' ')}>Страницы</h5>
+					<LinksGroup
+						onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+						activeItem={this.props.activeItem}
+						header="Анализ отзывов"
+						isHeader
+						iconName={<TypographyIcon className={s.menuIcon} />}
+						link="/app/analysis"
+						index="analysis"
+					/>
+					<LinksGroup
+						onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+						activeItem={this.props.activeItem}
+						header="Все отзывы"
+						isHeader
+						iconName={<TypographyIcon className={s.menuIcon} />}
+						link="/app/reviews"
+						index="reviews"
+					/>
+					<LinksGroup
+						onActiveSidebarItemChange={activeItem => this.props.dispatch(changeActiveSidebarItem(activeItem))}
+						activeItem={this.props.activeItem}
+						header="Графики"
+						isHeader
+						iconName={<TypographyIcon className={s.menuIcon} />}
+						link="/app/charts"
+						index="charts"
+					/>
+				</ul>
+			</nav>
+		);
+	}
 }
 
 function mapStateToProps(store) {
-    return {
-        sidebarOpened: store.navigation.sidebarOpened,
-        sidebarStatic: store.navigation.sidebarStatic,
-        alertsList: store.alerts.alertsList,
-        activeItem: store.navigation.activeItem,
-    };
+	return {
+		sidebarOpened: store.navigation.sidebarOpened,
+		sidebarStatic: store.navigation.sidebarStatic,
+		alertsList: store.alerts.alertsList,
+		activeItem: store.navigation.activeItem,
+	};
 }
 
 export default withRouter(connect(mapStateToProps)(Sidebar));
