@@ -31,10 +31,6 @@ class Analysis extends React.Component {
 	}
 
 	setInfo() {
-		let categories, rating;
-		let headers = {
-			'Access-Control-Allow-Origin' : '*'
-		}
 		let textAreaValue = document.getElementsByClassName('reviewArea')[0].value;
 		if (!textAreaValue) { return; }
 		let bodyFormData = new FormData();
@@ -48,7 +44,7 @@ class Analysis extends React.Component {
 		}).then(res => {
 			console.log(res.data)
 			if(res.data.response) {
-				this.setState({ categories: res.data.response.categories, rating: res.data.response.rating * 5 });	
+				this.setState({ categories: res.data.response.categories, rating: res.data.response.rating * 5 });
 				let errorDiv = document.getElementById('errorDiv');
 				errorDiv.setAttribute('style', 'display: none')
 				let widgets = document.getElementsByClassName(`${s.columnReviews}`);
@@ -80,12 +76,12 @@ class Analysis extends React.Component {
 							<h4>Для получения анализа введите ваш отзыв в поле ниже</h4>
 							<form>
 								<div className="mb-3 w-100 h-100 border rounded">
-									<textarea type="text" rows="5" style={{ background: "transparent" }} 
-											className="form-control reviewArea" 
+									<textarea type="text" rows="5" style={{ background: "transparent" }}
+											className="form-control reviewArea"
 											placeholder="Введите текст вашего отзыва здесь..."></textarea>
 								</div>
 								<div className="alert alert-danger" role="alert" id="errorDiv" style={{ display: 'none' }}>Просто проверка поля текста для ошибок</div>
-								<Button onClick={this.setInfo} color="default" style={{ marginTop: "0.5rem" }} 
+								<Button onClick={this.setInfo} color="default" style={{ marginTop: "0.5rem" }}
 										className="mr-2" size="sm">Отправить</Button>
 							</form>
 						</Widget>

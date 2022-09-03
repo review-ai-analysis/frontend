@@ -2,7 +2,6 @@ import React from 'react';
 import cx from 'classnames';
 import PropTypes from 'prop-types';
 import {connect} from 'react-redux';
-import {Progress, Alert} from 'reactstrap';
 import {withRouter} from 'react-router-dom';
 import {dismissAlert} from '../../actions/alerts';
 import s from './Sidebar.module.scss';
@@ -12,10 +11,6 @@ import {changeActiveSidebarItem} from '../../actions/navigation';
 import {logoutUser} from '../../actions/user';
 import HomeIcon from '../Icons/SidebarIcons/HomeIcon';
 import TypographyIcon from '../Icons/SidebarIcons/TypographyIcon';
-import TablesIcon from '../Icons/SidebarIcons/TablesIcon';
-import NotificationsIcon from '../Icons/SidebarIcons/NotificationsIcon';
-import ComponentsIcon from '../Icons/SidebarIcons/ComponentsIcon';
-
 
 class Sidebar extends React.Component {
 	static propTypes = {

@@ -1,142 +1,188 @@
 @import '../../styles/app';
 
 .text {
-	width: 65%;
-	padding-right: 5%;
+  width: 65%;
+  padding-right: 5%;
 }
 
 .data {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
-	align-content: flex-start;
-	width: 35%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  width: 35%;
 }
 
 .rating {
-	padding-right: 5%;
+  padding-right: 5%;
 }
 
 .categories {
-	display: flex;
-	flex-direction: column;
+  display: flex;
+  flex-direction: column;
 }
 
 .categoriesElem {
-	margin-top: 1vh;
+  margin-top: 1vh;
 }
 
-.showFullReview {	
-    color: #1870dc !important;
-    text-decoration: none !important;
+.showFullReview {
+  color: #1870dc !important;
+  text-decoration: none !important;
+}
+.controllist {
+    width: 150px;
+    height: 50px;
+    text-align: center;
+    vertical-align: middle;
+    padding-top: 15px;
+    cursor: pointer;
+}
+.menulist {
+  position: absolute;
+  cursor: pointer;
+  background-color: #13152f;
+  z-index: 5;
+}
+
+.optionlist {
+  background-color: #13152f;
+  display: inline-block;
+  color: rgba(244, 244, 245, 0.9);
+  margin-right: 10%;
+  border-radius: 5px;
+  z-index: 5;
+}
+
+.optionlist_2 {
+  background-color: #13152f;
+  display: inline-block;
+  color: rgba(244, 244, 245, 0.9);
+  border-radius: 5px;
+  z-index: 5;
+}
+
+.option:hover {
+  color: rgba(244, 244, 245, 0.9);
+  cursor: pointer;
 }
 
 .review {
-	display: flex;
-	flex-direction: row;
-	flex-wrap: wrap;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .date {
-	float: right;
-	font-size: 1.2rem;
+  float: right;
+  font-size: 1.2rem;
 }
 
 .counter {
-	display: inline-flex;
-	cursor:pointer;
-	width:150px;
-	height:150px;
-	max-width:100%;
-	position:relative;
-	justify-content:center;
-	align-items:center;
-	font-size: 25px;
-	font-weight: 500;
-	transition: height .2s ease-in-out;
-	background: transparent;
-	border-radius:50%;
+  display: inline-flex;
+  cursor: pointer;
+  width: 150px;
+  height: 150px;
+  max-width: 100%;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+  font-size: 25px;
+  font-weight: 500;
+  transition: height .2s ease-in-out;
+  background: transparent;
+  border-radius: 50%;
+}
+
+#buttons---btn---2jZHN .buttons---btn---2jZHN {
+  background-color: black;
 }
 
 .percentage {
-	position:absolute;
-	text-align:center;
-	top:50%;
-	left:0;
-	right:0;
-	vertical-align:middle;
-	transform:translate3d(0,-50%,0);
+  position: absolute;
+  text-align: center;
+  top: 50%;
+  left: 0;
+  right: 0;
+  vertical-align: middle;
+  transform: translate3d(0, -50%, 0);
 }
 
 // 4к монитор
 @media (min-width: 2560px) {
-	.descriptionAnalysis, .label {
-		font-size: 3vh !important;
-	}
-	.widgetClass {
-		display: flex;
-		flex-direction: row;
-		flex-wrap: wrap;
-	}
-	.pageTitle {
-		width: 100%;
-	}
-	.widgetElem {
-		width: 45%;
-		margin-right: 5%;
-	}
+  .descriptionAnalysis, .label {
+    font-size: 3vh !important;
+  }
+  .widgetClass {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+  }
+  .pageTitle {
+    width: 100%;
+  }
+  .widgetElem {
+    width: 45%;
+    margin-right: 5%;
+  }
 }
 
 // узкий пк и телефон
-@media	(max-width: 767px) {
-	.counter {
-		min-width: 150px;
-		display: block;
-		margin: 0 auto !important;
-	}
-	.data, .text, .rating, .categories {
-		padding: 0;
-		width: 100%;
-	}
+@media (max-width: 767px) {
+  .counter {
+    min-width: 150px;
+    display: block;
+    margin: 0 auto !important;
+  }
+  .data, .text, .rating, .categories {
+    padding: 0;
+    width: 100%;
+  }
 }
 
 // Планшет
 @media (min-width: 768px) and (max-width: 1360px) {
-	.text, .data {
-		width: 100%;
-	}
-	.rating {
-		margin: auto;
-		width: 50%;
-	}
-	.categories {
-		display: flex;
-		flex-direction: column;
-		width: 50%;
-	}
-	.descriptionAnalysis, .categories {
-		margin: 0;
-	}
-	.descriptionAnalysis {
-		padding-bottom: 1rem;
-	}
+  .text, .data {
+    width: 100%;
+  }
+  .rating {
+    margin: auto;
+    width: 50%;
+  }
+  .categories {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+
+  .descriptionAnalysis, .categories {
+    margin: 0;
+  }
+
+  .descriptionAnalysis {
+    padding-bottom: 1rem;
+  }
+    .optionlist {
+    margin-right: 0;
+    width: 100px;
+  }
 }
 
 // Широкий пк
-@media  (min-width: 1361px) {
-	.rating {
-		margin: auto;
-		width: 50%;
-	}
-	.categories {
-		display: flex;
-		flex-direction: column;
-		width: 50%;
-	}
-	.descriptionAnalysis, .categories {
-		margin: 0;
-	}
-	.descriptionAnalysis {
-		padding-bottom: 1rem;
-	}
+@media (min-width: 1361px) {
+  .rating {
+    margin: auto;
+    width: 50%;
+  }
+  .categories {
+    display: flex;
+    flex-direction: column;
+    width: 50%;
+  }
+  .descriptionAnalysis, .categories {
+    margin: 0;
+  }
+  .descriptionAnalysis {
+    padding-bottom: 1rem;
+  }
 }
