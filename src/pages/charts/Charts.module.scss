@@ -1,14 +1,12 @@
 @import '../../styles/app';
 
 .animCharts {
-	height: 60vh;
-	width: 60vw;
-	position: relative;
+  width: 100%;
 }
 
 @media (min-width: 768px) {
 	.animCharts {
-		height: auto;
-		width: auto;
+		height: 500px;
+		width: 100%;
 	}
  }

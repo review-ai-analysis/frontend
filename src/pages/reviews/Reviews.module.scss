@@ -44,7 +44,9 @@
   background-color: #13152f;
   z-index: 5;
 }
-
+.buttons {
+  display: inline-flex;
+}
 .optionlist {
   background-color: #13152f;
   display: inline-block;

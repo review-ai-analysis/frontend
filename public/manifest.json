@@ -1,13 +1,6 @@
 {
-  "short_name": "Light Blue Template 1.0.0 - Isomorphic React Dashboard",
-  "name": "Create React App Sample",
-  "icons": [
-    {
-      "src": "/favicon.png",
-      "sizes": "64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
-    }
-  ],
+  "short_name": "Reviews analyser",
+  "name": "Check you reviews, or read our!",
   "start_url": ".",
   "display": "standalone",
   "theme_color": "#000000",

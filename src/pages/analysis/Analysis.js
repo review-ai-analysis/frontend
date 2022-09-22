@@ -42,7 +42,6 @@ class Analysis extends React.Component {
 	    	data: bodyFormData,
 	  		headers: { "Content-Type": "multipart/form-data" },
 		}).then(res => {
-			console.log(res.data)
 			if(res.data.response) {
 				this.setState({ categories: res.data.response.categories, rating: res.data.response.rating * 5 });
 				let errorDiv = document.getElementById('errorDiv');
